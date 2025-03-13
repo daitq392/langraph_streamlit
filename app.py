@@ -9,8 +9,24 @@ from pymongo import MongoClient
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 
+from typing import Annotated
+
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.runnables import Runnable, RunnableConfig
+from typing_extensions import TypedDict
+
+from langgraph.graph.message import AnyMessage, add_messages
+from datetime import date, datetime
+from typing import Literal
+
+from langgraph.checkpoint.memory import MemorySaver
+from langgraph.graph import StateGraph
+from langgraph.prebuilt import tools_condition
+from langgraph.graph import END, StateGraph, START
+import shutil
+
+
 # MongoDB configuration
-MONGO_URI = "mongodb+srv://root:root@cluster0.wdubf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 DB_NAME = "appointments_db"
 COLLECTION_NAME = "appointments"
 
